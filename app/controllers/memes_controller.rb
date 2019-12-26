@@ -18,22 +18,23 @@ class MemesController < ApplicationController
   def update
     @meme = Meme.find(params[:id])
     if(@meme.update(meme_params))
-      redirect_to @meme
+      redirect_to @meme, success: 'Мем обновлен'
     else
       render 'edit'
     end
   end
 
   def destroy
+
     @meme = Meme.find(params[:id])
     @meme.destroy
-    redirect_to memes_path
+    redirect_to memes_path, success: 'Мем удален'
   end
 
   def create
     @meme = Meme.new(meme_params)
     if(@meme.save)
-      redirect_to @meme
+      redirect_to memes_path, success: 'Мем создан'
     else
       render 'new'
     end

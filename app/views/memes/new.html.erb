@@ -1,17 +1,17 @@
 <h3>Добавление нового мема</h3>
-<%= form_for :meme, url: memes_path do |f| %>
+<%= form_for :meme, url: memes_path, html: {multipart: true } do |f| %>
   <% if @meme.errors.any? %>
     <% @meme.errors.full_messages.each do |msg| %>
       <div class="alert alert-danger"><%= msg %></div>
     <% end %>
   <%end %>
   <p>
-    КартинОчка<br>
+    Картинка<br>
     <%= f.text_field(:title, {:class => 'form-control'}) %>
   </p>
   <p>
-    Путь к картинОчке<br>
-    <%= f.file_field(:image, {:class => 'form-control'}) %>
+    Путь к картинке<br>
+    <%= f.file_field :image  %>
   </p>
   <p>
     Пояснение<br>

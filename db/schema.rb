@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_26_105427) do
+ActiveRecord::Schema.define(version: 2019_12_26_175848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.string "username"
+    t.text "body"
+    t.bigint "meme_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["meme_id"], name: "index_comments_on_meme_id"
+  end
 
   create_table "memes", force: :cascade do |t|
     t.string "title"
@@ -23,4 +32,5 @@ ActiveRecord::Schema.define(version: 2019_12_26_105427) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "comments", "memes"
 end

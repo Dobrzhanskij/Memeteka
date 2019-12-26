@@ -2,7 +2,10 @@
 <% @meme.each do |mem| %>
   <div class="alert alert-light">
     <h3> <%= mem.title %> </h3>
-    <p> <%= mem.body %> </p>
+    <div>
+      <img src = <%= mem.image.large%>>
+    </div>
+
     <%= link_to "Читать далее", meme_path(mem), :class => 'btn btn-outline-primary' %>
   </div>
 <% end %>
