@@ -1,5 +1,10 @@
 <h3>Добавление нового мема</h3>
 <%= form_for :meme, url: memes_path do |f| %>
+  <% if @meme.errors.any? %>
+    <% @meme.errors.full_messages.each do |msg| %>
+      <div class="alert alert-danger"><%= msg %></div>
+    <% end %>
+  <%end %>
   <p>
     КартинОчка<br>
     <%= f.text_field(:title, {:class => 'form-control'}) %>

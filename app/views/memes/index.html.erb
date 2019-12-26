@@ -1,5 +1,8 @@
 <h1>Все наши мемы</h1>
-<% @meme.each do |meme| %>
-  <h3> <%= meme.title %> </h3>
-  <p> <%= meme.body %> </p>
+<% @meme.each do |mem| %>
+  <div class="alert alert-light">
+    <h3> <%= mem.title %> </h3>
+    <p> <%= mem.body %> </p>
+    <%= link_to "Читать далее", meme_path(mem), :class => 'btn btn-outline-primary' %>
+  </div>
 <% end %>

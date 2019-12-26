@@ -4,7 +4,7 @@ class MemesController < ApplicationController
   end
 
   def new
-
+    @meme = Meme.new
   end
 
   def show
@@ -13,9 +13,12 @@ class MemesController < ApplicationController
 
   def create
     @meme = Meme.new(meme_params)
-    @meme.save
 
-    redirect_to @meme
+    if(@meme.save)
+      redirect_to @meme
+
+      else render 'new'
+    end
   end
 
   private def meme_params
