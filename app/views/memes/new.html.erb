@@ -1,0 +1,18 @@
+<h3>Добавление нового мема</h3>
+<%= form_for :meme, url: memes_path do |f| %>
+  <p>
+    КартинОчка<br>
+    <%= f.text_field(:title, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    Путь к картинОчке<br>
+    <%= f.file_field(:image, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    Пояснение<br>
+    <%= f.text_area(:body, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    <%= f.submit({:class => 'btn btn-success'}) %>
+  </p>
+<% end %>
