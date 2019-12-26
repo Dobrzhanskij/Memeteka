@@ -1,0 +1,23 @@
+<h5>Редактирование мема</h5>
+<%= form_for :meme, url: meme_path(@meme), method: :patch do |f| %>
+  <% if @meme.errors.any? %>
+    <% @meme.errors.full_messages.each do |msg| %>
+      <div class="alert alert-danger"><%= msg %></div>
+    <% end %>
+  <%end %>
+  <p>
+    КартинОчка<br>
+    <%= f.text_field(:title, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    Путь к картинОчке<br>
+    <%= f.file_field(:image, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    Пояснение<br>
+    <%= f.text_area(:body, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    <%= f.submit({:class => 'btn btn-success'}) %>
+  </p>
+<% end %>

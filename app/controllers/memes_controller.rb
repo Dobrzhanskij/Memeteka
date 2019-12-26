@@ -11,13 +11,31 @@ class MemesController < ApplicationController
     @meme = Meme.find(params[:id])
   end
 
+  def edit
+    @meme = Meme.find(params[:id])
+  end
+
+  def update
+    @meme = Meme.find(params[:id])
+    if(@meme.update(meme_params))
+      redirect_to @meme
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @meme = Meme.find(params[:id])
+    @meme.destroy
+    redirect_to memes_path
+  end
+
   def create
     @meme = Meme.new(meme_params)
-
     if(@meme.save)
       redirect_to @meme
-
-      else render 'new'
+    else
+      render 'new'
     end
   end
 
