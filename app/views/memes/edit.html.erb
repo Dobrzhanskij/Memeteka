@@ -1,4 +1,4 @@
-<h5>Редактирование мема</h5>
+<h3>Редактирование мема</h3>
 <%= form_for :meme, url: meme_path(@meme), method: :patch do |f| %>
   <% if @meme.errors.any? %>
     <% @meme.errors.full_messages.each do |msg| %>
@@ -6,12 +6,12 @@
     <% end %>
   <%end %>
   <p>
-    КартинОчка<br>
+    Заголовок<br>
     <%= f.text_field(:title, {:class => 'form-control'}) %>
   </p>
   <p>
-    Путь к картинОчке<br>
-    <%= f.file_field(:image, {:class => 'form-control'}) %>
+    Путь к картинке<br>
+    <%= f.file_field :image  %>
   </p>
   <p>
     Пояснение<br>

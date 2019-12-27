@@ -1,11 +1,19 @@
 <h1>Все наши мемы</h1>
 <% @meme.each do |mem| %>
-  <div class="alert alert-light">
-    <h3> <%= mem.title %> </h3>
+  <div class="alert">
+    <h3 class="title"> <%= mem.title %> </h3>
+    <small>
+      <time>
+        <%= mem .created_at.to_date.strftime("%d %B, %Y") %>
+      </time>
+      <% if user_signed_in? %>
+        <%= link_to "Редактировать мем", edit_meme_path(mem) %>
+        <%= link_to "Удалить мем", meme_path(mem), method: :delete, data: {confirm: "Хотите удалить мем?"} %>
+      <% end %>
+    </small>
     <div>
-      <img src = <%= mem.image.large%>>
+      <img src = <%= mem.image.medium%>>
     </div>
-
     <%= link_to "Читать далее", meme_path(mem), :class => 'btn btn-outline-primary' %>
   </div>
 <% end %>

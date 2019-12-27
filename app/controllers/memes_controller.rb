@@ -1,4 +1,6 @@
 class MemesController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @meme = Meme.all
   end
@@ -25,7 +27,6 @@ class MemesController < ApplicationController
   end
 
   def destroy
-
     @meme = Meme.find(params[:id])
     @meme.destroy
     redirect_to memes_path, success: 'Мем удален'

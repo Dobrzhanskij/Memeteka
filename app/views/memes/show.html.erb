@@ -1,18 +1,14 @@
-<h1><%= @meme.title %></h1>
+<h2><%= @meme.title %></h2>
 <img src = <%= @meme.image.large%>>
 <p><%= @meme.body %></p>
-<hr>
-<%= link_to "Редактировать мем", edit_meme_path(@meme), :class => 'btn btn-warning' %>
-<%= link_to "Удалить мем", meme_path(@meme), method: :delete, data: {confirm: "Хотите удалить мем?"}, :class => 'btn btn-danger' %>
-<hr>
-<h3>Все комментарии</h3>
+<h2>Все комментарии</h2>
 <% @meme.comments.each do |comment| %>
   <div class="alert alert-light">
     <p><strong><%= comment.username %> </strong>: <%= comment.body%> </p>
   </div>
 <% end %>
 <hr>
-<h3>Добавление комментария</h3>
+<h2>Добавление комментария</h2>
 <%= form_for([@meme, @meme.comments.build]) do |f| %>
   <p>
     Пользователь<br>
